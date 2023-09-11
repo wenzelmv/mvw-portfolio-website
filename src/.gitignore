@@ -1,0 +1,19 @@
+# The following were suggestions taken from 
+# https://erresen.github.io/vue/js/git/2020/07/08/vue-js-gitigore.html
+
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
