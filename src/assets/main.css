@@ -1,3 +1,10 @@
-body {
-  margin: 0
+html {
+  font-size: 62.5%;
+}
+
+/* Reset margins for common elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
