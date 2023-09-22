@@ -8,6 +8,11 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/testview',
+    name: 'test',
+    component: () => import("@/views/TestView.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     // route level code-splitting
