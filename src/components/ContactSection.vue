@@ -1,22 +1,45 @@
 <template>
   <!-- Contact Section -->
   <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Feel free to reach out to me:</p>
-    <ul>
-      <li>Email: yourname@example.com</li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/yourname/">LinkedIn Profile</a></li>
-      <!-- Add other contact information or social media links -->
-    </ul>
+    <h2>Contact me!</h2>
+    <FormKit
+      type="form"
+      id="contact-form"
+      :form-class="submitted ? 'hide' : 'show'"
+      submit-label="Register"
+      @submit="submitHandler"
+      :actions="false"
+      #default="{ value }"
+    >
+      <hr />
+      <FormKit type="text" name="name" placeholder="Name" validation="required" />
+      <FormKit type="text" name="email" placeholder="Email" validation="required|email" />
+      <FormKit type="textarea" name="message" placeholder="Message" validation="required" />
+      <FormKit type="submit" label="Send" />
+      <pre wrap>{{ value }}</pre>
+    </FormKit>
+    <div v-if="submitted">
+      <h2>Submission successful!</h2>
+    </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const submitted = ref(false)
+const submitHandler = async () => {
+  // Let's pretend this is an ajax request:
+  await new Promise((r) => setTimeout(r, 1000))
+  submitted.value = true
+}
+</script>
 
 <style scoped>
 /* Contact section styles */
 #contact {
   background-color: #f8f8f8;
   padding: 2rem;
-  text-align: center;
   font-size: 1.6rem; /* Equivalent to 16 pixels (1.6 * 10) */
 }
 
