@@ -1,87 +1,81 @@
 <template>
   <!-- Contact Section -->
-  <section id="contact">
+  <section class="contact-section">
     <h2>Contact me!</h2>
-    <FormKit
-      type="form"
-      id="contact-form"
-      :form-class="submitted ? 'hide' : 'show'"
-      submit-label="Register"
-      @submit="submitHandler"
-      :actions="false"
-      #default="{ value }"
-    >
-      <hr />
-      <FormKit type="text" name="name" placeholder="Name" validation="required" />
-      <FormKit type="text" name="email" placeholder="Email" validation="required|email" />
-      <FormKit type="textarea" name="message" placeholder="Message" validation="required" />
-      <FormKit type="submit" label="Send" />
-      <pre wrap>{{ value }}</pre>
-    </FormKit>
-    <div v-if="submitted">
-      <h2>Submission successful!</h2>
-    </div>
+    <!-- Uses https://formspree.io/ to send email to me with a message -->
+    <form action="https://formspree.io/f/mwkdrzql" method="post" class="contact-form">
+      <!-- Name -->
+      <div class="form-group">
+        <input type="text" name="name" id="name" placeholder="Name" required />
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        <input type="email" name="email" id="email" placeholder="Email" required />
+      </div>
+      <!-- Message -->
+      <div class="form-group">
+        <textarea name="message" id="message" placeholder="Message" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">Send</button>
+    </form>
   </section>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const submitted = ref(false)
-const submitHandler = async () => {
-  // Let's pretend this is an ajax request:
-  await new Promise((r) => setTimeout(r, 1000))
-  submitted.value = true
-}
-</script>
-
 <style scoped>
 /* Contact section styles */
-#contact {
-  background-color: #f8f8f8;
+.contact-section {
+  color: #fff;
   padding: 2rem;
-  font-size: 1.6rem; /* Equivalent to 16 pixels (1.6 * 10) */
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
+/* Contact form styles */
 .contact-form {
-  max-width: 600px; /* Adjust the maximum width as needed */
-  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
-  margin-bottom: 1rem;
-}
-
-label {
-  display: block;
-  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
 input[type='text'],
 input[type='email'],
 textarea {
   width: 100%;
-  padding: 0.5rem;
-  font-size: 1.2rem; /* Equivalent to 12 pixels (1.2 * 10) */
+  padding: 1rem;
+  font-size: 1.2rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  outline: none;
 }
 
 textarea {
-  resize: vertical; /* Allow vertical resizing of the textarea */
+  resize: vertical;
+  min-height: 150px;
 }
 
-button[type='submit'] {
+.submit-button {
   background-color: #333;
   color: #fff;
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem; /* Equivalent to 12 pixels (1.2 * 10) */
+  padding: 1rem;
+  font-size: 1.2rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-button[type='submit']:hover {
-  background-color: #555; /* Darker color on hover */
+.submit-button:hover {
+  background-color: #555;
 }
 </style>
