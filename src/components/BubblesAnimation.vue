@@ -53,22 +53,22 @@
   position: relative;
   width: 30px;
   height: 30px;
-  background: #4fc3dc;
+  background: #e0115f;
   margin: 0 4px;
   border-radius: 50%;
   box-shadow:
-    0 0 0 10px #4fc3dc44,
-    0 0 50px #4fc3dc,
-    0 0 100px #4fc3dc;
+    0 0 0 10px #e0115f44,
+    0 0 50px #e0115f,
+    0 0 100px #e0115f;
   animation: animate 15s linear infinite;
   animation-duration: calc(250s / var(--i));
 }
 .bubbles span:nth-child(even) {
-  background: #ff2d75;
+  background: #c54b8c;
   box-shadow:
-    0 0 0 10px #ff2d7544,
-    0 0 50px #ff2d75,
-    0 0 100px #ff2d75;
+    0 0 0 10px #c54b8c44,
+    0 0 50px #c54b8c,
+    0 0 100px #c54b8c;
 }
 @keyframes animate {
   0% {
