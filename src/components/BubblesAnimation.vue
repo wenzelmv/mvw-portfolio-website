@@ -47,6 +47,7 @@
 .bubbles {
   position: relative;
   display: flex;
+  z-index: -999;
 }
 .bubbles span {
   position: relative;

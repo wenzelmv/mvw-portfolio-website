@@ -1,42 +1,22 @@
 <template>
   <!-- Hero Section -->
   <section id="hero">
-    <h1>Hi, I'm Michael Van Wenzel.</h1>
-    <h2>Web Developer & Designer</h2>
+    <h1>Hi, I'm <span>Michael Van Wenzel</span>.</h1>
+    <h2>Full Stack Developer</h2>
     <!-- Add any additional information you want to showcase here -->
-    <button id="scroll-button">View</button>
-
+    <ScrollButton />
     <BubblesAnimation />
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+import ScrollButton from './ScrollButton.vue'
 import BubblesAnimation from './BubblesAnimation.vue'
-
-onMounted(() => {
-  // Find the button element
-  const scrollButton: HTMLElement | null = document.getElementById('scroll-button')
-
-  // Add a click event listener to the button
-  if (scrollButton) {
-    scrollButton.addEventListener('click', () => {
-      // Find the next section you want to scroll to (e.g., "about", "portfolio", etc.)
-      const nextSection: HTMLElement | null = document.querySelector('#about') // Change the selector as needed
-
-      // Use the scrollIntoView() method to scroll to the next section smoothly
-      if (nextSection) {
-        nextSection.scrollIntoView({ behavior: 'smooth' })
-      }
-    })
-  }
-})
 </script>
 
 <style lang="scss" scoped>
 /* Base styles for all screen sizes */
 #hero {
-  background-color: #0c192c;
   color: #fff;
   padding: 2rem;
   text-align: center;
@@ -51,11 +31,20 @@ onMounted(() => {
 }
 
 #hero h1 {
-  font-size: 2.5rem; /* Equivalent to 25 pixels (2.5 * 10) */
+  font-size: 4.2rem; /* Equivalent to 25 pixels (2.5 * 10) */
   margin: 0;
+}
+
+#hero h2 {
+  font-size: 3.2rem;
+  margin-bottom: 24px;
 }
 
 #hero p {
   font-size: 1.2rem; /* Equivalent to 12 pixels (1.2 * 10) */
+}
+
+span {
+  color: #ffa500;
 }
 </style>
