@@ -15,6 +15,9 @@ import { onMounted, ref, computed } from 'vue'
 // Define a ref to track whether the navigation bar should be sticky
 const isSticky = ref(false)
 
+// Define a ref to track the currently active section
+const activeSection = ref('hero') // Default to the 'hero' section
+
 onMounted(() => {
   // Find the navigation links with data-scroll attributes
   const scrollLinks: NodeListOf<HTMLElement> = document.querySelectorAll('[data-scroll]')
@@ -49,6 +52,29 @@ onMounted(() => {
       isSticky.value = window.scrollY >= offset
     }
   })
+
+  window.addEventListener('scroll', () => {
+    // Find the top of each section and its corresponding link
+    const sections = ['hero', 'about', 'portfolio', 'contact']
+    const linkElements = document.querySelectorAll('[data-scroll]')
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i])
+      if (section && section.getBoundingClientRect().top <= 1) {
+        activeSection.value = sections[i]
+        break
+      }
+    }
+    // Update the link color based on the active section
+    linkElements.forEach((link) => {
+      const targetId = link.getAttribute('data-scroll')
+      if (targetId === activeSection.value) {
+        link.classList.add('active-link')
+      } else {
+        link.classList.remove('active-link')
+      }
+    })
+  })
 })
 
 // Determine the CSS class for the navigation bar based on the isSticky ref
@@ -60,17 +86,19 @@ const navbarClass = computed(() => {
 <style scoped>
 /* Navigation bar styles */
 #navbar {
-  background-color: #aaa;
-  color: #fff;
-  padding: 1rem 0; /* Adjust the padding as needed */
+  background-color: #333;
+  padding: 1.6rem 0; /* Adjust the padding as needed */
   text-align: center;
   position: relative; /* Initial position */
   z-index: 100; /* Ensure it's on top of other content */
+  display: flex;
+  justify-content: center;
 }
 
 #navbar ul {
   list-style: none;
   padding: 0;
+  gap: 50px;
 }
 
 #navbar li {
@@ -80,8 +108,9 @@ const navbarClass = computed(() => {
 
 #navbar a {
   text-decoration: none;
-  color: #fff;
-  font-size: 1.2rem; /* Adjust the font size as needed */
+  color: #f5f5f5f5;
+  font-size: 1.6rem; /* Adjust the font size as needed */
+  transition: color 0.3s ease; /* Add a smooth transition for color changes */
 }
 
 /* Sticky navigation bar styles */
@@ -89,18 +118,10 @@ const navbarClass = computed(() => {
   position: fixed;
   top: 0;
   width: 100%;
-  animation: fadeInDown 0.3s ease; /* Optional: Add a fade-in effect */
 }
 
-/* Optional animation keyframes for the fade-in effect */
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Style the active link */
+#navbar a.active-link {
+  color: #007bff; /* Change the color to your desired active link color */
 }
 </style>
