@@ -15,6 +15,9 @@
   "dependencies": {
     "@formkit/themes": "^1.1.0",
     "@formkit/vue": "^1.1.0",
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/js": "^7.2.96",
+    "particles.js": "^2.0.0",
     "pinia": "^2.1.6",
     "three": "^0.156.1",
     "vue": "^3.3.4",
