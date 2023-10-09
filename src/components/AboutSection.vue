@@ -18,8 +18,7 @@ import TheNavigation from '@/components/TheNavigation.vue'
 <style scoped>
 /* About section styles */
 #about {
-  background-color: #f8f8f8; /* A light background color for the "About" section */
-  color: #333; /* A dark text color for the content */
+  color: #fff; /* A dark text color for the content */
   padding: 2rem;
   text-align: center;
   font-size: 1.6rem; /* Equivalent to 16 pixels (1.6 * 10) */
