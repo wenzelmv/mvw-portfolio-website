@@ -2,7 +2,7 @@
   <div>
     <HeroSection />
     <AboutSection />
-    <ProjectsSection />
+    <PortfolioSection />
     <ContactSection />
     <FooterSection />
   </div>
@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import HeroSection from '@/components/HeroSection.vue'
 import AboutSection from '@/components/AboutSection.vue'
-import ProjectsSection from '@/components/ProjectsSection.vue'
+import PortfolioSection from '@/components/PortfolioSection.vue'
 import FooterSection from '@/components/FooterSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
 </script>
