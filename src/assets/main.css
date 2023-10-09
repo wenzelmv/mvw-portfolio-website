@@ -1,5 +1,6 @@
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 /* Reset margins for common elements */
@@ -7,4 +8,9 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #0c192c;
+  font-family: 'Montserrat', sans-serif;
 }
